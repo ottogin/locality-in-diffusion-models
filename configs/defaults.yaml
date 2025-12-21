@@ -7,7 +7,7 @@ experiment:
   run_name: default # Name of the run - overwritten in each individual config file
   append_timestamp: true # if true, run name is augmented with timestamp
                          # if false, running the same config will overwrite the previous run (same name)
-  device: cuda
+  device: cuda # cuda / mps / cpu
 
 sampling:
   num_samples: 8

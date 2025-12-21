@@ -138,7 +138,7 @@ experiment:
   run_name: pca_locality_celeba_hq  # Name of the run - overwritten in each individual config file
   tags: [baseline, pca_locality, celeba_hq]  # Tags for experiment organization
   seed: 42  # Random seed for reproducibility
-  device: cuda  # Device to run on (cuda/cpu)
+  device: cuda  # Device to run on (cuda/cpu/mps)
 
 # Dataset configuration: name, split, resolution, batch size
 dataset:
