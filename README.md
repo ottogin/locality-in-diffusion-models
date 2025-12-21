@@ -181,7 +181,8 @@ You can override any config value from the command line using dot notation:
 ```bash
 uv run generate.py --config configs/pca_locality/celeba_hq.yaml \
     sampling.num_samples=16 \
-    model.params.temperature=0.5
+    model.params.temperature=0.5\
+    experiment.device=cpu
 ```
 
 ## Output Structure
