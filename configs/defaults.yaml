@@ -1,0 +1,30 @@
+# Base configuration with common defaults
+# Use this as a base for other configs via the defaults feature
+
+experiment:
+  seed: 42
+  name: default
+  run_name: default # Name of the run - overwritten in each individual config file
+  append_timestamp: true # if true, run name is augmented with timestamp
+                         # if false, running the same config will overwrite the previous run (same name)
+  device: cuda
+
+sampling:
+  num_samples: 8
+  batch_size: 8
+  num_inference_steps: 10
+
+metrics:
+  baseline_path: null # Path to the baseline model checkpoint to compare against
+  output:
+    code_snapshot: true
+    save_metrics: true
+    save_final_images: true
+    save_image_grid: true
+    save_intermediate_images: true
+  wandb:
+    enabled: true # Disable wandb for faster experiments run
+    project: locality-diffusion
+    mode: online # online / offline
+    job_type: generation
+

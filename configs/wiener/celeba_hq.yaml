@@ -1,0 +1,25 @@
+defaults:
+  - /defaults.yaml
+
+experiment:
+  run_name: wiener_celeba_hq
+  tags: [baseline, wiener, celeba_hq]
+
+dataset:
+  name: celeba_hq
+  split: train
+  download: false  # Manual download required
+  batch_size: 256
+  subset_size: null  # Use full dataset for Wiener filter computation
+  resolution: 64  # Resize to 64x64 for manageable covariance matrix
+
+model:
+  name: wiener
+
+sampling:
+  num_samples: 8
+  batch_size: 8
+
+metrics:
+  baseline_path: "data/models/baseline_unet/celeba_hq/ckpt_epoch_200.pt"
+

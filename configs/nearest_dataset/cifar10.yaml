@@ -1,0 +1,20 @@
+defaults:
+  - /defaults.yaml
+
+experiment:
+  run_name: nearest_cifar10
+  tags: [baseline, nearest, cifar10]
+
+dataset:
+  name: cifar10
+  split: train
+  download: true
+  batch_size: 512
+  subset_size: null # Use full dataset for nearest dataset computation
+
+model:
+  name: nearest_dataset
+  params: {}
+
+metrics:
+  baseline_path: "data/models/baseline_unet/cifar10/ckpt_epoch_200.pt"

@@ -1,0 +1,20 @@
+defaults:
+  - /defaults.yaml
+
+experiment:
+  run_name: wiener_fashion_mnist
+  tags: [baseline, wiener, fashion_mnist]
+
+dataset:
+  name: fashion_mnist
+  split: train
+  download: true
+  batch_size: 512
+  subset_size: null  # Use full dataset for Wiener filter computation
+
+model:
+  name: wiener
+
+metrics:
+  baseline_path: "data/models/baseline_unet/fashion_mnist/ckpt_epoch_200.pt"
+

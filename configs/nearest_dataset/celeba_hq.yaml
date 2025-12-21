@@ -1,0 +1,21 @@
+defaults:
+  - /defaults.yaml
+
+experiment:
+  run_name: nearest_celeba_hq
+  tags: [baseline, nearest, celeba_hq]
+
+dataset:
+  name: celeba_hq
+  split: train
+  download: false  # Manual download required
+  batch_size: 256
+  subset_size: null # Use full dataset for nearest dataset computation
+  resolution: 64  # Resize to 64x64 for faster processing
+
+model:
+  name: nearest_dataset
+  params: {}
+
+metrics:
+  baseline_path: "data/models/baseline_unet/celeba_hq/ckpt_epoch_200.pt"

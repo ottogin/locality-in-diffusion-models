@@ -1,0 +1,71 @@
+[build-system]
+# A list of packages that are needed to build your package:
+requires = [
+    "setuptools"
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "local-diffusion"
+version = "1.0.0"
+description = "Implementation of the paper 'Locality in Image Diffusion Models Emerges from Data Statistics'"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { file = "LICENSE.txt" }
+keywords = ["diffusion", "image", "diffusion models"]
+authors = [{ name = "Artem Lukoianov", email = "lukartoil@gmail.com" }]
+maintainers = [{ name = "Artem Lukoianov", email = "lukartoil@gmail.com" }]
+
+classifiers = [
+  "Development Status :: 4 - Beta",
+
+  # Indicate who your project is intended for
+  "Intended Audience :: Science/Research",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Topic :: Scientific/Engineering :: Image Processing",
+
+  "License :: OSI Approved :: Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0)",
+
+  # Specify the Python versions you support here. In particular, ensure
+  # that you indicate you support Python 3. These classifiers are *not*
+  # checked by "pip install". See instead "requires-python" key in this file.
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12"
+]
+
+
+dependencies = [
+    "torch>=2.0",
+    "torchvision",
+    "numpy",
+    "pillow",
+    "tqdm",
+    "wandb",
+    "diffusers",
+    "omegaconf",
+    "faiss-cpu",
+]
+
+[project.optional-dependencies]
+dev = []
+test = []
+
+[project.urls]
+"Homepage" = "https://locality.lukoianov.com/"
+"Bug Reports" = "https://github.com/ottogin/locality-in-diffusion-models/issues"
+"Source" = "https://github.com/ottogin/locality-in-diffusion-models"
+
+# The following would provide a command line executable called `sample`
+# which executes the function `main` from this package when invoked.
+# [project.scripts]
+# sample = "sample:main"
+
+# This is configuration specific to the `setuptools` build backend.
+# If you are using a different build backend, you will need to change this.
+# [tool.setuptools]
+# If there are data files included in your packages that need to be
+# installed, specify them here.
+#package-data = { "sample" = ["*.dat"] }

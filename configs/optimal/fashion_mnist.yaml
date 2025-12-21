@@ -1,0 +1,23 @@
+defaults:
+  - /defaults.yaml
+
+experiment:
+  run_name: optimal_fashion_mnist
+  tags: [baseline, optimal, fashion_mnist]
+
+dataset:
+  name: fashion_mnist
+  split: train
+  download: true
+  batch_size: 512
+  subset_size: null  # Use full dataset for optimal denoiser index
+
+model:
+  name: optimal
+  params:
+    temperature: 1.0  # Temperature for softmax weighting
+    num_neighbors: 200  # Number of nearest neighbors to use for search
+
+metrics:
+  baseline_path: "data/models/baseline_unet/fashion_mnist/ckpt_epoch_200.pt"
+

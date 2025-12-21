@@ -1,0 +1,25 @@
+defaults:
+  - /defaults.yaml
+
+experiment:
+  run_name: pca_locality_cifar10
+  tags: [baseline, pca_locality, cifar10]
+
+dataset:
+  name: cifar10
+  split: train
+  download: true
+  batch_size: 512
+  subset_size: null  # Set to a smaller value to limit projection cache size
+
+model:
+  name: pca_locality
+  params:
+    temperature: 1.0
+    mask_threshold: 0.05
+    chunk_size: 1024
+
+metrics:
+  baseline_path: "data/models/baseline_unet/cifar10/ckpt_epoch_200.pt"
+
+
