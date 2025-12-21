@@ -60,7 +60,7 @@ def _download_afhq(target_dir: Path) -> None:
 
     LOGGER.info("Downloading from %s", url)
     subprocess.run(
-        ["wget", "-N", url, "-O", str(zip_path)],
+        ["curl", "-L", url, "-o", str(zip_path)],
         check=True,
     )
 
