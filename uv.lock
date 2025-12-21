@@ -494,6 +494,9 @@ requires-dist = [
 ]
 provides-extras = ["dev", "test"]
 
+[package.metadata.requires-dev]
+dev = []
+
 [[package]]
 name = "markupsafe"
 version = "3.0.3"

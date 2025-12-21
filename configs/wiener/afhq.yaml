@@ -8,7 +8,7 @@ experiment:
 dataset:
   name: afhq
   split: train
-  download: false  # Manual download required
+  download: true  # Manual download required
   batch_size: 256
   subset_size: null  # Use full dataset for Wiener filter computation
   resolution: 64  # Resize to 64x64 for manageable covariance matrix

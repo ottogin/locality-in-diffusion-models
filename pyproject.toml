@@ -69,3 +69,7 @@ test = []
 # If there are data files included in your packages that need to be
 # installed, specify them here.
 #package-data = { "sample" = ["*.dat"] }
+
+# uv configuration - enables `uv run` to work without manual `uv pip install -e .`
+[tool.uv]
+dev-dependencies = []

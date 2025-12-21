@@ -8,7 +8,7 @@ experiment:
 dataset:
   name: celeba_hq
   split: train
-  download: false  # Manual download required
+  download: true
   batch_size: 256
   subset_size: null  # Set to a smaller value to limit projection cache size
   resolution: 64  # Keep resolution manageable for covariance projections

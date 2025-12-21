@@ -52,8 +52,8 @@ Supported datasets:
 - `mnist`: MNIST handwritten digits
 - `fashion_mnist`: Fashion-MNIST
 - `cifar10`: CIFAR-10
-- `celeba_hq`: CelebA-HQ (requires manual download)
-- `afhq`: AFHQ (requires manual download)
+- `celeba_hq`: CelebA-HQ
+- `afhq`: AFHQv2
 
 Most datasets auto-download. 
 For `celeba_hq` and `afhq`, so please download them manually and place data in `data/datasets/`.
@@ -63,33 +63,29 @@ For `celeba_hq` and `afhq`, so please download them manually and place data in `
 ### Prerequisites
 
 - Python 3.9 or higher
-- [uv](https://github.com/astral-sh/uv) package manager
-- CUDA-capable GPU (recommended) or CPU
+- [uv](https://github.com/astral-sh/uv) package manager.
+- [Recommended] CUDA-capable GPU -- if you dont have it, make sure to change the device in the config to CPU/MPS
 
 ### Installation
+No manual setup required! Just use `uv run` directly.
 
-1. Create a virtual environment:
+<details>
+<summary>Alternative: Manual installation</summary>
+
+If you prefer to set up the environment manually:
+
 ```bash
 uv venv
-```
-
-2. Activate the virtual environment:
-```bash
-source .venv/bin/activate  # On Linux/Mac
-# or
-.venv\Scripts\activate  # On Windows
-```
-
-3. Install the package in editable mode:
-```bash
+source .venv/bin/activate  # On Linux/Mac (.venv\Scripts\activate on Windows)
 uv pip install -e .
 ```
+</details>
 
-The `-e` flag allows you to edit the code and have changes take effect immediately.
 
-### Download the baseline UNET weights
-Please run this script to download the weights of the UNET models pre-trained for all of the baseline datasets.
-You can skip this step, but then the metrics wont be available.
+### Download the baseline UNET weights and the data
+First we need to run this script to download the weights of the UNET models pre-trained for all of the baseline datasets.
+It 
+You can skip this step, but then the metrics wont be available -- make sure to disable `baseline_path` in the config.
 
 ```bash
 uv run download_baseline_weights.py
@@ -99,7 +95,8 @@ uv run download_baseline_weights.py
 
 ### Single Experiment
 
-Run a single experiment using a config file:
+Now, run the command below to generate images with our analytical model.
+UV will automatically create the virtual environment and install all dependencies (including the package in editable mode):
 
 ```bash
 uv run generate.py --config configs/pca_locality/celeba_hq.yaml
@@ -223,33 +220,6 @@ metrics:
 ```
 
 
-## Directory Structure
-
-The project follows a structured layout:
-
-```
-locality-in-diffusion-models/
-├── configs/              # Configuration files
-│   ├── defaults.yaml     # Base configuration with common defaults
-│   ├── pca_locality/     # Configs for the method proposed in our paper
-│   ├── optimal/          # Optimal denoiser baseline
-│   ├── wiener/           # Wiener filter baseline
-│   └── nearest_dataset/  # Nearest neighbor baseline
-├── src/
-│   └── local_diffusion/  # Main package code
-│       ├── models/       # Model implementations (pca_locality.py, etc.)
-│       ├── data/         # Dataset loading utilities
-│       ├── configuration.py  # Config management
-│       └── metrics.py    # Evaluation metrics
-├── data/                 # Data directory (created automatically)
-│   ├── datasets/         # Dataset storage
-│   ├── models/           # Precomputed models (Wiener filters, etc.)
-│   ├── runs/             # Experiment outputs
-│   └── wandb/            # Weights & Biases logs
-├── generate.py           # Main entry point for experiments
-└── run_all.sh            # Batch script to run all experiments
-```
-
 ## Contributing
 
 We welcome contributions to this repository! Here are some ways you can help:
@@ -279,9 +249,33 @@ To add a new analytical diffusion model:
 3. Add configuration files in `configs/model_name/` for each dataset
 4. Update this README to document your model
 
-### Questions
 
-For questions or discussions about the codebase, please reach out to [arteml@mit.edu](mailto:arteml@mit.edu).
+### Project Directory Structure
+
+The project follows a structured layout:
+
+```
+locality-in-diffusion-models/
+├── configs/              # Configuration files
+│   ├── defaults.yaml     # Base configuration with common defaults
+│   ├── pca_locality/     # Configs for the method proposed in our paper
+│   ├── optimal/          # Optimal denoiser baseline
+│   ├── wiener/           # Wiener filter baseline
+│   └── nearest_dataset/  # Nearest neighbor baseline
+├── src/
+│   └── local_diffusion/  # Main package code
+│       ├── models/       # Model implementations (pca_locality.py, etc.)
+│       ├── data/         # Dataset loading utilities
+│       ├── configuration.py  # Config management
+│       └── metrics.py    # Evaluation metrics
+├── data/                 # Data directory (created automatically)
+│   ├── datasets/         # Dataset storage
+│   ├── models/           # Precomputed models (Wiener filters, etc.)
+│   ├── runs/             # Experiment outputs
+│   └── wandb/            # Weights & Biases logs
+├── generate.py           # Main entry point for experiments
+└── run_all.sh            # Batch script to run all experiments
+```
 
 ## Citation
 
