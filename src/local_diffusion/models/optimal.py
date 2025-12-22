@@ -1,14 +1,24 @@
 """Optimal denoiser baseline using FAISS for efficient KNN search over full-resolution images."""
 
 import logging
+import os
+import platform
 from pathlib import Path
 from typing import Any, Dict, Optional, Tuple
 
+# Fix OpenMP conflict between FAISS and PyTorch on macOS
+# Must be set before importing faiss
+if platform.system() == "Darwin":
+    os.environ.setdefault("KMP_DUPLICATE_LIB_OK", "TRUE")
 import faiss
+# On macOS, FAISS threading can cause hangs due to fork safety issues
+# Force single-threaded mode to avoid this
+if platform.system() == "Darwin":
+    faiss.omp_set_num_threads(1)
+
 import numpy as np
 import torch
 from tqdm import tqdm
-
 from local_diffusion.data import DatasetBundle
 from local_diffusion.models.base import BaseDenoiser
 from local_diffusion.models import register_model
