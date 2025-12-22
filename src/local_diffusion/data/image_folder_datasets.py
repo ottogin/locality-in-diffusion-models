@@ -72,6 +72,7 @@ def _download_afhq(target_dir: Path) -> None:
     LOGGER.info("AFHQ dataset ready at %s", target_dir)
 
 
+# NOTE: Allows to load flat-structured directories unlike class-based like datasets.ImageFolder
 class ImageFolderDataset(Dataset):
     """Generic dataset for loading images from a folder."""
 
