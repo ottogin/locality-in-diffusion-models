@@ -37,6 +37,9 @@
   <img src="data/assets/main_comparison_github.png" alt="Main Comparison Results" width="100%">
 </p>
 
+> [!NOTE]
+> 🐛 **Help us improve!** We've noticed inconsistent generation on different systems. If you encounter any bugs, inconsistent behavior, or have suggestions, please [open an issue](https://github.com/ottogin/locality-in-diffusion-models/issues). Your feedback is valuable!
+
 ## Models
 
 The repository implements several analytical diffusion models:
