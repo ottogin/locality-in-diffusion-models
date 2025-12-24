@@ -1,0 +1,30 @@
+defaults:
+  - /defaults.yaml
+
+experiment:
+  run_name: pca_locality_celeba_hq
+  tags: [baseline, pca_locality, celeba_hq]
+
+dataset:
+  name: celeba_hq
+  split: train
+  download: true
+  batch_size: 256
+  subset_size: null  # Set to a smaller value to limit projection cache size
+  resolution: 64  # Keep resolution manageable for covariance projections
+
+model:
+  name: pca_locality
+  params:
+    temperature: 1.0
+    mask_threshold: 0.02
+    chunk_size: 512
+
+sampling:
+  num_samples: 8
+  batch_size: 8
+
+metrics:
+  baseline_path: "data/models/baseline_unet/celeba_hq/ckpt_epoch_200.pt"
+
+

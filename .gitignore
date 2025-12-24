@@ -58,6 +58,7 @@ Thumbs.db
 
 # Data
 data/
+!src/local_diffusion/data
 datasets/
 *.h5
 *.hdf5

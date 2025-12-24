@@ -1,0 +1,19 @@
+defaults:
+  - /defaults.yaml
+
+experiment:
+  run_name: wiener_mnist
+  tags: [baseline, wiener, mnist]
+
+dataset:
+  name: mnist
+  split: train
+  download: true
+  batch_size: 512
+  subset_size: null  # Use full dataset for Wiener filter computation
+
+model:
+  name: wiener
+
+metrics:
+  baseline_path: "data/models/baseline_unet/mnist/ckpt_epoch_200.pt"

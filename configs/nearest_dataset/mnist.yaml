@@ -1,0 +1,20 @@
+defaults:
+  - /defaults.yaml
+
+experiment:
+  run_name: nearest_mnist
+  tags: [baseline, nearest, mnist]
+
+dataset:
+  name: mnist
+  split: train
+  download: true
+  batch_size: 512
+  subset_size: null # Use full dataset for nearest dataset computation
+
+model:
+  name: nearest_dataset
+  params: {}
+
+metrics:
+  baseline_path: "data/models/baseline_unet/mnist/ckpt_epoch_200.pt"

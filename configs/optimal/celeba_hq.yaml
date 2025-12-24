@@ -1,0 +1,24 @@
+defaults:
+  - /defaults.yaml
+
+experiment:
+  run_name: optimal_celeba_hq
+  tags: [baseline, optimal, celeba_hq]
+
+dataset:
+  name: celeba_hq
+  split: train
+  download: true
+  resolution: 64  # Resize to 64x64 for manageable covariance matrix
+  batch_size: 512
+  subset_size: null  # Use full dataset for optimal denoiser index
+
+model:
+  name: optimal
+  params:
+    temperature: 1.0  # Temperature for softmax weighting
+    num_neighbors: 200  # Number of nearest neighbors to use for search
+
+metrics:
+  baseline_path: "data/models/baseline_unet/celeba_hq/ckpt_epoch_200.pt"
+
