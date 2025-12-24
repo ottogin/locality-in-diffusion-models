@@ -115,7 +115,7 @@ The config path can be:
 Run all baseline-dataset combinations using the provided script:
 
 ```bash
-./run_all.sh
+./run_all_baselines.sh
 ```
 
 This script iterates over:
