@@ -124,6 +124,10 @@ This script iterates over:
 
 It automatically skips missing config files and runs each experiment sequentially.
 
+### Notebook
+
+For quick experimentation, you can use the Jupyter notebook: `playground.ipynb`
+
 
 ## Configuration Files
 
@@ -279,7 +283,8 @@ locality-in-diffusion-models/
 │   ├── runs/             # Experiment outputs
 │   └── wandb/            # Weights & Biases logs
 ├── generate.py           # Main entry point for experiments
-└── run_all.sh            # Batch script to run all experiments
+├── playground.ipynb      # Interactive Jupyter notebook for experimentation
+└── run_all_baselines.sh  # Batch script to run all experiments
 ```
 
 ## Citation
